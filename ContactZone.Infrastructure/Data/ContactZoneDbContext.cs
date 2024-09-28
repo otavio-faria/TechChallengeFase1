@@ -10,8 +10,8 @@ namespace ContactZone.Infrastructure.Data
 {
     public class ContactZoneDbContext : DbContext
     {
-        public DbSet<ContatoDomain> Contatos { get; set; }
-        public DbSet<DadoPessoalContatoDomain> DadosPessoais { get; set; }
+        public DbSet<ContactDomain> Contatos { get; set; }
+        public DbSet<PersonalDataContactDomain> DadosPessoais { get; set; }
         
         public ContactZoneDbContext(DbContextOptions<ContactZoneDbContext> options)
            : base(options)

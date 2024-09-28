@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContactZone.Domain.Domains
 {
-    public class DadoPessoalContatoDomain
+    public class PersonalDataContactDomain
     {
         public int Id { get; set; }
         public string DDD { get; set; }

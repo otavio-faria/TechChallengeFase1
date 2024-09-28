@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContactZone.Domain.Domains
 {
-    public class ContatoDomain
+    public class ContactDomain
     {
         public int Id { get; set; }
         public string Nome { get; set; }
