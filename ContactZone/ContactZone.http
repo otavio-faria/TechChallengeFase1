@@ -1,6 +1,0 @@
-@ContactZone_HostAddress = http://localhost:5050
-
-GET {{ContactZone_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
