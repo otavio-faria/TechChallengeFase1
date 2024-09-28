@@ -13,6 +13,19 @@ namespace ContactZone.Infrastructure.Data.FluentMap
     {
         public void Configure(EntityTypeBuilder<ContactDomain> builder)
         {
+            builder.ToTable("Contact");
+
+            builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
+
+            builder.Property(x => x.Name)
+               .IsRequired()
+               .HasColumnName("Name")
+               .HasColumnType("NVARCHAR")
+               .HasMaxLength(80);
 
         }
     }

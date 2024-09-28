@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace ContactZone.Domain.Domains
 {
-    public class PersonalDataContactDomain
+    public class ContactPersonalDataDomain
     {
         public int Id { get; set; }
+        public int ContactId { get; set; }
         public string DDD { get; set; }
-        public string Telefone { get; set; }
+        public string Phone { get; set; }
         public string Email { get; set; }
     }
 }
