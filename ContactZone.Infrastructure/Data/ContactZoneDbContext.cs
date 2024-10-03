@@ -1,18 +1,14 @@
 ﻿using ContactZone.Domain.Domains;
+using ContactZone.Infrastructure.Data.FluentMap;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactZone.Infrastructure.Data
 {
     public class ContactZoneDbContext : DbContext
     {
         public DbSet<ContactDomain> Contatos { get; set; }
-        public DbSet<PersonalDataContactDomain> DadosPessoais { get; set; }
-        
+        public DbSet<ContactPersonalDataDomain> DadosPessoais { get; set; }
+
         public ContactZoneDbContext(DbContextOptions<ContactZoneDbContext> options)
            : base(options)
         {
@@ -20,8 +16,8 @@ namespace ContactZone.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          //  modelBuilder.ApplyConfiguration(new ContatoMap());
-          //  modelBuilder.ApplyConfiguration(new DadosPessoaisContatoMap());
+            modelBuilder.ApplyConfiguration(new ContactMap());
+            modelBuilder.ApplyConfiguration(new ContactPersonalDataMap());
         }
     }
 }

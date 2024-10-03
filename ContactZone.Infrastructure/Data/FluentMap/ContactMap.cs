@@ -1,11 +1,6 @@
 ﻿using ContactZone.Domain.Domains;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactZone.Infrastructure.Data.FluentMap
 {
@@ -27,6 +22,10 @@ namespace ContactZone.Infrastructure.Data.FluentMap
                .HasColumnType("NVARCHAR")
                .HasMaxLength(80);
 
+            builder.HasOne(x => x.ContactPersonalDataDomain)
+                   .WithOne(x => x.Contact)
+                   .HasForeignKey<ContactPersonalDataDomain>(x => x.ContactId)  
+                   .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

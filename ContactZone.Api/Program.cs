@@ -1,4 +1,5 @@
 using ContactZone.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSqlServer<ContactZoneDbContext>(
-    builder.Configuration.GetConnectionString("ContactZone"));
+// Configure DbContext with connection string and specify migrations assembly
+builder.Services.AddDbContext<ContactZoneDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ContactZone"),
+    b => b.MigrationsAssembly("ContactZone.Infrastructure")));
 
 var app = builder.Build();
 
