@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ContactZone.Application\ContactZone.Application.csproj" />
     <ProjectReference Include="..\ContactZone.Domain\ContactZone.Domain.csproj" />
     <ProjectReference Include="..\ContactZone.Infrastructure\ContactZone.Infrastructure.csproj" />

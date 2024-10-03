@@ -1,3 +1,4 @@
+using ContactZone.Application.Services;
 using ContactZone.Infrastructure.Data;
 using ContactZone.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -23,12 +24,19 @@ void RegisterScoped(WebApplicationBuilder builder)
     builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
     builder.Services.AddScoped<IContactRepository, ContactRepository>();
     builder.Services.AddScoped<IContactPersonalDataRepository, ContactPersonalDataRepository>();
+    builder.Services.AddScoped<IContactService, ContactService>();
+    builder.Services.AddScoped<IContactPersonalDataService, ContactPersonalDataService>();
+
 }
 
 void RegisterGeneralServices(WebApplicationBuilder builder)
 {
     // Add services to the container.
-    builder.Services.AddControllers();
+    builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+    });
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();

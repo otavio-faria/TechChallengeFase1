@@ -7,9 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
     <Folder Include="Dtos\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ContactZone.Domain\ContactZone.Domain.csproj" />
+    <ProjectReference Include="..\ContactZone.Infrastructure\ContactZone.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
