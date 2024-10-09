@@ -43,6 +43,8 @@ void RegisterGeneralServices(WebApplicationBuilder builder)
 
     // Configure DbContext with connection string and specify migrations assembly
     builder.Services.AddDbContext<ContactZoneDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("ContactZone"),
-        b => b.MigrationsAssembly("ContactZone.Infrastructure")));
+        options.UseSqlServer(
+        builder.Configuration.GetConnectionString("ContactZone"),
+        b => b.MigrationsAssembly("ContactZone.Infrastructure"))
+        ,ServiceLifetime.Scoped);
 }
