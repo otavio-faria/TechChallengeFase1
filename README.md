@@ -1,5 +1,9 @@
 # ContactZone
 
+## Objetivo
+
+Este projeto é um Tech Challenge do primeiro período da pós-graduação em Arquiteturas de Sistemas da instituição FIAP. O objetivo principal é aplicar e consolidar os conhecimentos adquiridos nas disciplinas do curso, através do desenvolvimento de um aplicativo prático e funcional.
+
 ## Descrição
 
 **ContactZone** é um aplicativo desenvolvido utilizando a plataforma .NET 8 para cadastro de contatos regionais. O projeto abrange conceitos de persistência de dados, validação, e boas práticas de desenvolvimento. Esta aplicação permite o cadastro, consulta, atualização e exclusão de contatos, associando-os a um DDD correspondente à região.
@@ -125,8 +129,6 @@ Este projeto foi desenvolvido com o **.NET 8**. Para executar o aplicativo local
 
 - [.NET 8 SDK Download](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-## Objetivo
 
-Esse projeto é um tech challange do primeiro período da pós-graduação em Arquiteturas de Sistemas da instituição Fiap.
 
 
