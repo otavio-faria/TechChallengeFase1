@@ -27,14 +27,14 @@ namespace ContactZone.Api.Controllers
             if (dto == null)
                 return BadRequest("Invalid contact data.");
 
-            var contactDomain = PostContactDto.ToDomain(new PostContactDto() { Name = dto.Name});
+            var contactDomain = PostContactDto.ToDomain(new PostContactDto() { Name = dto.Name });
             await _contactService.AddAsync(contactDomain);
             var contactPersonalDataDomain = ContactPersonalDataDto.ToDomain(new ContactPersonalDataDto()
             {
                 DDD = dto.DDD,
                 Email = dto.Email,
                 Phone = dto.Phone
-            }, 
+            },
             contactDomain.Id);
             await _contactPersonalDataService.AddAsync(contactPersonalDataDomain);
 
@@ -42,9 +42,19 @@ namespace ContactZone.Api.Controllers
         }
 
         // GET: api/Contact
+        /// <summary>
+        /// Caso o usuário informe ddd 0 a busca retorna todos os contatos
+        /// </summary>
+        /// <param name="ddd"></param>
+        /// <returns></returns>
         [HttpGet("FilterByDDD/{ddd}")]
         public async Task<ActionResult<IEnumerable<ContactDomain>>> GetAll(int ddd)
         {
+            if (ddd < 0) 
+            {
+                return BadRequest("DDD cannot be negative.");
+            }
+
             var contacts = new List<ContactDomain>();   
             if (ddd == 0)
             {
@@ -61,7 +71,10 @@ namespace ContactZone.Api.Controllers
         [HttpGet("GetByID/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
+            if (id <= 0) return BadRequest("The id must be a positive value");
+
             var contact = await _contactService.GetByIdAsync(id);
+
             if (contact == null)
                 return NotFound();
 
