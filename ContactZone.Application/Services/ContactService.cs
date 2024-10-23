@@ -1,5 +1,6 @@
 ﻿using ContactZone.Domain.Domains;
 using ContactZone.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,16 @@ namespace ContactZone.Application.Services
         public async void Update(ContactDomain entity)
         {
             _contactRepository.Update(entity);
+        }
+
+        public async Task<IEnumerable<ContactDomain>> GetContactWithAllInformation()
+        {
+            return await _contactRepository.GetContactWithAllInformation();
+        }
+
+        public async Task<IEnumerable<ContactDomain>> GetContactFilteringByDDD(int ddd)
+        {
+            return await _contactRepository.GetContactFilteringByDDD(ddd);
         }
     }
 }

@@ -18,5 +18,7 @@ namespace ContactZone.Application.Services
         Task RemoveAsync(ContactDomain entity);
         Task RemoveRangeAsync(IEnumerable<ContactDomain> entities);
         void Update(ContactDomain entity);
+        public Task<IEnumerable<ContactDomain>> GetContactWithAllInformation();
+        public Task<IEnumerable<ContactDomain>> GetContactFilteringByDDD(int ddd);
     }
 }

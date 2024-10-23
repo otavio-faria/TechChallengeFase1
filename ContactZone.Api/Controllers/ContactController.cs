@@ -1,5 +1,4 @@
-﻿using ContactZone.Api.Dtos;
-using ContactZone.Api.DTOs;
+﻿using ContactZone.Api.DTOs;
 using ContactZone.Application.Services;
 using ContactZone.Domain.Domains;
 using Microsoft.AspNetCore.Mvc;
@@ -43,16 +42,24 @@ namespace ContactZone.Api.Controllers
         }
 
         // GET: api/Contact
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ContactDomain>>> GetAll()
+        [HttpGet("FilterByDDD/{ddd}")]
+        public async Task<ActionResult<IEnumerable<ContactDomain>>> GetAll(int ddd)
         {
-            var contacts = await _contactService.GetAllAsync();
+            var contacts = new List<ContactDomain>();   
+            if (ddd == 0)
+            {
+                contacts = (List<ContactDomain>)await _contactService.GetContactWithAllInformation();
+            }
+            if(ddd != 0)
+            {
+                contacts = (List<ContactDomain>)await _contactService.GetContactFilteringByDDD(ddd);
+            }
             return Ok(contacts);
         }
 
         // GET: api/Contact/{id}
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ContactDomain>> GetById(int id)
+        [HttpGet("GetByID/{id}")]
+        public async Task<IActionResult> GetById(int id)
         {
             var contact = await _contactService.GetByIdAsync(id);
             if (contact == null)
