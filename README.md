@@ -125,10 +125,8 @@ Este projeto foi desenvolvido com o **.NET 8**. Para executar o aplicativo local
 
 - [.NET 8 SDK Download](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-## Contribuição
+## Objetivo
 
-Sinta-se à vontade para contribuir para este projeto, fazendo um fork e criando um pull request com melhorias ou correções.
+Esse projeto é um tech challange do primeiro período da pós-graduação em Arquiteturas de Sistemas da instituição Fiap.
 
-## Licença
 
-Este projeto está sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
