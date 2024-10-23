@@ -42,7 +42,7 @@ Directory: C:\PersonalProjects\ContactZone
 
 ### Requisitos Técnicos
 
-- **Persistência de Dados**: Utiliza um banco de dados para armazenar as informações dos contatos com Entity Framework Core ou Dapper.
+- **Persistência de Dados**: Utiliza um banco de dados para armazenar as informações dos contatos com Entity Framework Core.
 - **Validações**: Implementa validações para garantir dados consistentes (por exemplo: validação de formato de e-mail, telefone, campos obrigatórios).
 - **Testes Unitários**: Desenvolve testes unitários utilizando xUnit ou NUnit.
 
