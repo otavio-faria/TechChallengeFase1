@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContactZone.Infrastructure.Migrations
 {
     [DbContext(typeof(ContactZoneDbContext))]
-    [Migration("20241003140852_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20241028005601_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,28 +32,6 @@ namespace ContactZone.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("NVARCHAR")
-                        .HasColumnName("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Contact", (string)null);
-                });
-
-            modelBuilder.Entity("ContactZone.Domain.Domains.ContactPersonalDataDomain", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ContactId")
-                        .HasColumnType("int");
-
                     b.Property<string>("DDD")
                         .IsRequired()
                         .HasMaxLength(3)
@@ -66,6 +44,12 @@ namespace ContactZone.Infrastructure.Migrations
                         .HasColumnType("NVARCHAR")
                         .HasColumnName("Email");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("NVARCHAR")
+                        .HasColumnName("Name");
+
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasMaxLength(11)
@@ -74,27 +58,7 @@ namespace ContactZone.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContactId")
-                        .IsUnique();
-
-                    b.ToTable("ContactPersonalData", (string)null);
-                });
-
-            modelBuilder.Entity("ContactZone.Domain.Domains.ContactPersonalDataDomain", b =>
-                {
-                    b.HasOne("ContactZone.Domain.Domains.ContactDomain", "Contact")
-                        .WithOne("ContactPersonalDataDomain")
-                        .HasForeignKey("ContactZone.Domain.Domains.ContactPersonalDataDomain", "ContactId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Contact");
-                });
-
-            modelBuilder.Entity("ContactZone.Domain.Domains.ContactDomain", b =>
-                {
-                    b.Navigation("ContactPersonalDataDomain")
-                        .IsRequired();
+                    b.ToTable("Contact", (string)null);
                 });
 #pragma warning restore 612, 618
         }

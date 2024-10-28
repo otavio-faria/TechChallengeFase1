@@ -4,8 +4,8 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        // Navigation Property
-        public ContactPersonalDataDomain ContactPersonalDataDomain { get; set; }
+        public string DDD { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
     }
 }

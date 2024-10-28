@@ -16,7 +16,7 @@ namespace ContactZone.Tests.Api
         public ContactControllerValidationTestUpdate()
         {
             _contactServiceMock = new Mock<IContactService>();
-            _controller = new ContactController(_contactServiceMock.Object,null);
+            _controller = new ContactController(_contactServiceMock.Object);
         }
 
         [Fact]

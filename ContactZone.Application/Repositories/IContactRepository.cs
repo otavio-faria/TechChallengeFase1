@@ -1,7 +1,7 @@
 ﻿using ContactZone.Domain.Domains;
 using System.Threading.Tasks;
 
-namespace ContactZone.Infrastructure.Repositories
+namespace ContactZone.Application.Repositories
 {
     public interface IContactRepository : IGenericRepository<ContactDomain>
     {

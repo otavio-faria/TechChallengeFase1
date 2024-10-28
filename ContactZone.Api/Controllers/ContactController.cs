@@ -1,4 +1,5 @@
-﻿using ContactZone.Api.DTOs;
+﻿using ContactZone.Api.Dtos;
+using ContactZone.Api.DTOs;
 using ContactZone.Application.Services;
 using ContactZone.Domain.Domains;
 using Microsoft.AspNetCore.Mvc;
@@ -12,31 +13,27 @@ namespace ContactZone.Api.Controllers
     public class ContactController : ControllerBase
     {
         private readonly IContactService _contactService;
-        private readonly IContactPersonalDataService _contactPersonalDataService;
 
-        public ContactController(IContactService contactService, IContactPersonalDataService contactPersonalDataService)
+        public ContactController(IContactService contactService)
         {
             _contactService = contactService;
-            _contactPersonalDataService = contactPersonalDataService;   
         }
 
         // POST: api/Contact
         [HttpPost]
-        public async Task<IActionResult> Create(PostContactAndPersonalDataDto dto)
+        public async Task<IActionResult> Create(PostContactDto dto)
         {
             if (dto == null)
                 return BadRequest("Invalid contact data.");
 
-            var contactDomain = PostContactDto.ToDomain(new PostContactDto() { Name = dto.Name });
-            await _contactService.AddAsync(contactDomain);
-            var contactPersonalDataDomain = ContactPersonalDataDto.ToDomain(new ContactPersonalDataDto()
-            {
-                DDD = dto.DDD,
+            var contactDomain = PostContactDto.ToDomain(new PostContactDto() 
+            { 
+                Name = dto.Name,
                 Email = dto.Email,
-                Phone = dto.Phone
-            },
-            contactDomain.Id);
-            await _contactPersonalDataService.AddAsync(contactPersonalDataDomain);
+                Phone = dto.Phone,
+                DDD = dto.DDD,
+            });
+            await _contactService.AddAsync(contactDomain);
 
             return CreatedAtAction(nameof(GetById), new { id = contactDomain.Id }, contactDomain);
         }
@@ -48,23 +45,27 @@ namespace ContactZone.Api.Controllers
         /// <param name="ddd"></param>
         /// <returns></returns>
         [HttpGet("FilterByDDD/{ddd}")]
-        public async Task<ActionResult<IEnumerable<ContactDomain>>> GetAll(int ddd)
+        public async Task<ActionResult<IEnumerable<FilterByDDDDto>>> GetAll(int ddd)
         {
-            if (ddd < 0) 
+            if (ddd < 0)
             {
                 return BadRequest("DDD cannot be negative.");
             }
 
-            var contacts = new List<ContactDomain>();   
+            IEnumerable<ContactDomain> contacts;
+
             if (ddd == 0)
             {
-                contacts = (List<ContactDomain>)await _contactService.GetContactWithAllInformation();
+                contacts = await _contactService.GetContactWithAllInformation();
             }
-            if(ddd != 0)
+            else
             {
-                contacts = (List<ContactDomain>)await _contactService.GetContactFilteringByDDD(ddd);
+                contacts = await _contactService.GetContactFilteringByDDD(ddd);
             }
-            return Ok(contacts);
+
+            var contactDtos = FilterByDDDDto.MapToDto(contacts);
+
+            return Ok(contactDtos);
         }
 
         // GET: api/Contact/{id}

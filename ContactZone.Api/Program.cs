@@ -1,6 +1,7 @@
+using ContactZone.Application.Repositories;
+using ContactZone.Infrastructure.Repositories;
 using ContactZone.Application.Services;
 using ContactZone.Infrastructure.Data;
-using ContactZone.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,10 +24,7 @@ void RegisterScoped(WebApplicationBuilder builder)
 {
     builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
     builder.Services.AddScoped<IContactRepository, ContactRepository>();
-    builder.Services.AddScoped<IContactPersonalDataRepository, ContactPersonalDataRepository>();
     builder.Services.AddScoped<IContactService, ContactService>();
-    builder.Services.AddScoped<IContactPersonalDataService, ContactPersonalDataService>();
-
 }
 
 void RegisterGeneralServices(WebApplicationBuilder builder)

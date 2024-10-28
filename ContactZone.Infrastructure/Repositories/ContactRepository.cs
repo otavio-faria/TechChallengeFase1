@@ -2,6 +2,7 @@
 using ContactZone.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections;
+using ContactZone.Application.Repositories;
 
 namespace ContactZone.Infrastructure.Repositories
 {
@@ -16,15 +17,13 @@ namespace ContactZone.Infrastructure.Repositories
         public async Task<IEnumerable<ContactDomain>> GetContactWithAllInformation()
         {
             return await _context.Contatos
-                .Include(x => x.ContactPersonalDataDomain)
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<ContactDomain>> GetContactFilteringByDDD(int ddd)
         {
             return await _context.Contatos
-                .Include(x => x.ContactPersonalDataDomain)
-                .Where(x => x.ContactPersonalDataDomain.DDD == ddd.ToString())
+                .Where(x => x.DDD == ddd.ToString())
                 .ToListAsync();
         }
     }

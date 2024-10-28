@@ -7,7 +7,6 @@ namespace ContactZone.Infrastructure.Data
     public class ContactZoneDbContext : DbContext
     {
         public DbSet<ContactDomain> Contatos { get; set; }
-        public DbSet<ContactPersonalDataDomain> DadosPessoais { get; set; }
 
         public ContactZoneDbContext(DbContextOptions<ContactZoneDbContext> options)
            : base(options)
@@ -16,7 +15,6 @@ namespace ContactZone.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ContactMap());
-            modelBuilder.ApplyConfiguration(new ContactPersonalDataMap());
         }
     }
 }

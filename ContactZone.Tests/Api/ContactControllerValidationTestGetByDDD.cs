@@ -20,7 +20,7 @@ namespace ContactZone.Tests.Api
             _mockContactService = new Mock<IContactService>();
 
             // Instanciando o controlador com o serviço mockado
-            _controller = new ContactController(_mockContactService.Object, null);
+            _controller = new ContactController(_mockContactService.Object);
         }
 
         [Fact]
@@ -57,14 +57,9 @@ namespace ContactZone.Tests.Api
                 { 
                     Id = 1, 
                     Name = "Contact 1",
-                    ContactPersonalDataDomain = new ContactPersonalDataDomain()
-                        {
                             DDD = "11",
-                            ContactId = 1,
                             Email = "teste@teste.com",
                             Phone = "999999999",
-                            Id = 1,
-                        } 
                 }
             };
 

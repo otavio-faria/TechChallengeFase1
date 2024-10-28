@@ -1,4 +1,5 @@
-﻿using ContactZone.Infrastructure.Data;
+﻿using ContactZone.Application.Repositories;
+using ContactZone.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

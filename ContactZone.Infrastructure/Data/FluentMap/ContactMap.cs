@@ -22,10 +22,24 @@ namespace ContactZone.Infrastructure.Data.FluentMap
                .HasColumnType("NVARCHAR")
                .HasMaxLength(80);
 
-            builder.HasOne(x => x.ContactPersonalDataDomain)
-                   .WithOne(x => x.Contact)
-                   .HasForeignKey<ContactPersonalDataDomain>(x => x.ContactId)  
-                   .OnDelete(DeleteBehavior.Cascade);
+            builder.Property(x => x.DDD)
+               .IsRequired()
+               .HasColumnName("DDD")
+               .HasColumnType("NVARCHAR")
+               .HasMaxLength(3);
+
+            builder.Property(x => x.Phone)
+               .IsRequired()
+               .HasColumnName("Phone")
+               .HasColumnType("NVARCHAR")
+               .HasMaxLength(11);
+
+            builder.Property(x => x.Email)
+               .IsRequired()
+               .HasColumnName("Email")
+               .HasColumnType("NVARCHAR")
+               .HasMaxLength(200);
+
         }
     }
 }

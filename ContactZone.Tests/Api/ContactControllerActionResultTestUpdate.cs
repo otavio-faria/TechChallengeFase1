@@ -17,7 +17,7 @@ namespace ContactZone.Tests.Api
         public ContactControllerActionResultTestUpdate()
         {
             _contactServiceMock = new Mock<IContactService>();
-            _controller = new ContactController(_contactServiceMock.Object,null);
+            _controller = new ContactController(_contactServiceMock.Object);
         }
 
         [Fact]
@@ -25,8 +25,21 @@ namespace ContactZone.Tests.Api
         {
             // Arrange
             int validId = 1; // ID válido
-            var existingContact = new ContactDomain { Id = validId, Name = "Old Name" };
-            var updatedDto = new PostContactDto { Name = "John Doe" };
+            var existingContact = new ContactDomain
+            {
+                Id = validId,
+                Name = "Old Name",
+                DDD = "11",
+                Phone = "999999999",
+                Email = "old@example.com"
+            };
+            var updatedDto = new PostContactDto
+            {
+                Name = "John Doe",
+                DDD = "22",
+                Phone = "888888888",
+                Email = "john@example.com"
+            };
 
             _contactServiceMock.Setup(s => s.GetByIdAsync(validId))
                 .ReturnsAsync(existingContact); // Simula que o contato existe
@@ -37,6 +50,9 @@ namespace ContactZone.Tests.Api
             // Assert
             Assert.IsType<NoContentResult>(result); // Verifica se o resultado é NoContent
             Assert.Equal("John Doe", existingContact.Name); // Verifica se o nome foi atualizado corretamente
+            Assert.Equal("22", existingContact.DDD);
+            Assert.Equal("888888888", existingContact.Phone);
+            Assert.Equal("john@example.com", existingContact.Email);
         }
 
         [Fact]
@@ -44,7 +60,13 @@ namespace ContactZone.Tests.Api
         {
             // Arrange
             int nonExistentId = 99; // ID que não existe
-            var validDto = new PostContactDto { Name = "John Doe" };
+            var validDto = new PostContactDto
+            {
+                Name = "John Doe",
+                DDD = "22",
+                Phone = "888888888",
+                Email = "john@example.com"
+            };
 
             _contactServiceMock.Setup(s => s.GetByIdAsync(nonExistentId))
                 .ReturnsAsync((ContactDomain)null); // Simula que o contato não foi encontrado

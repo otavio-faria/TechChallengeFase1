@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContactZone.Infrastructure.Repositories
+namespace ContactZone.Application.Repositories
 {
     public interface IGenericRepository<T> where T : class
     {

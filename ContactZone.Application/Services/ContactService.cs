@@ -1,12 +1,6 @@
-﻿using ContactZone.Domain.Domains;
-using ContactZone.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ContactZone.Application.Repositories;
+using ContactZone.Domain.Domains;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactZone.Application.Services
 {
