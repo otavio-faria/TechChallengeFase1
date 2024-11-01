@@ -1,5 +1,4 @@
 ﻿using ContactZone.Domain.Domains;
-using System.Threading.Tasks;
 
 namespace ContactZone.Application.Repositories
 {

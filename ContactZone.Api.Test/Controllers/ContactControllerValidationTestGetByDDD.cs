@@ -1,8 +1,5 @@
 ﻿using Moq;
-using Xunit;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using ContactZone.Api.Controllers;
 using ContactZone.Application.Services;
 using ContactZone.Domain.Domains;

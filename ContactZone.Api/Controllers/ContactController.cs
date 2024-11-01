@@ -3,8 +3,6 @@ using ContactZone.Api.DTOs;
 using ContactZone.Application.Services;
 using ContactZone.Domain.Domains;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ContactZone.Api.Controllers
 {

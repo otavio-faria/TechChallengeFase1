@@ -1,9 +1,7 @@
-﻿using System.Threading.Tasks;
-using ContactZone.Api.Controllers;
+﻿using ContactZone.Api.Controllers;
 using ContactZone.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Xunit;
 
 namespace ContactZone.Tests.Api
 {
