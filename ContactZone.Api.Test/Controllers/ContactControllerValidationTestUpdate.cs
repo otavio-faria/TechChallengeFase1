@@ -4,7 +4,7 @@ using ContactZone.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 
-namespace ContactZone.Tests.Controllers
+namespace ContactZone.Api.Test.Controllers
 {
     public class ContactControllerValidationTestUpdate
     {

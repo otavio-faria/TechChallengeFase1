@@ -5,7 +5,7 @@ using ContactZone.Domain.Domains;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 
-namespace ContactZone.Tests.Controllers
+namespace ContactZone.Api.Test.Controllers
 {
     public class ContactControllerActionResultTestGetByDDD
     {
