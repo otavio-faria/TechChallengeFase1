@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6DAA9476-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactZone.Application.Test", "ContactZone.Application.Test\ContactZone.Application.Test.csproj", "{39777D06-71E9-4AF7-BD3B-DDACD5A77C11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactZone.Infrastructure.Test", "ContactZone.Infrastructure.Test\ContactZone.Infrastructure.Test.csproj", "{D0065FD9-415F-4F07-A3AE-9EFF4B8C4F27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{39777D06-71E9-4AF7-BD3B-DDACD5A77C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39777D06-71E9-4AF7-BD3B-DDACD5A77C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39777D06-71E9-4AF7-BD3B-DDACD5A77C11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0065FD9-415F-4F07-A3AE-9EFF4B8C4F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0065FD9-415F-4F07-A3AE-9EFF4B8C4F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0065FD9-415F-4F07-A3AE-9EFF4B8C4F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0065FD9-415F-4F07-A3AE-9EFF4B8C4F27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,5 +69,6 @@ Global
 		{5912DA8D-03D9-4B8F-AC67-BD35397F258E} = {B4F55369-9F83-4A10-BAE8-DFA865FB80E5}
 		{EBEA7A95-2D89-4287-BEA6-6CBAEFBDE5B1} = {6DAA9476-27DB-47B5-B7E5-12F5CD8F46DE}
 		{39777D06-71E9-4AF7-BD3B-DDACD5A77C11} = {6DAA9476-27DB-47B5-B7E5-12F5CD8F46DE}
+		{D0065FD9-415F-4F07-A3AE-9EFF4B8C4F27} = {6DAA9476-27DB-47B5-B7E5-12F5CD8F46DE}
 	EndGlobalSection
 EndGlobal
