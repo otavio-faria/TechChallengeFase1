@@ -4,7 +4,7 @@ using ContactZone.Domain.Domains;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 
-namespace ContactZone.Tests.Api
+namespace ContactZone.Tests.Controllers
 {
     public class ContactControllerActionResultTestGetById
     {

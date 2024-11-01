@@ -3,7 +3,7 @@ using ContactZone.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 
-namespace ContactZone.Tests.Api
+namespace ContactZone.Tests.Controllers
 {
     public class ContactControllerValidationTestGetById
     {

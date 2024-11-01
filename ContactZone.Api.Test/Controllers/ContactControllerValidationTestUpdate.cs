@@ -1,10 +1,10 @@
 ﻿using ContactZone.Api.Controllers;
-using ContactZone.Api.DTOs;
+using ContactZone.Api.Dtos;
 using ContactZone.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 
-namespace ContactZone.Tests.Api
+namespace ContactZone.Tests.Controllers
 {
     public class ContactControllerValidationTestUpdate
     {

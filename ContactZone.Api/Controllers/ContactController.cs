@@ -1,5 +1,4 @@
 ﻿using ContactZone.Api.Dtos;
-using ContactZone.Api.DTOs;
 using ContactZone.Application.Services;
 using ContactZone.Domain.Domains;
 using Microsoft.AspNetCore.Mvc;
