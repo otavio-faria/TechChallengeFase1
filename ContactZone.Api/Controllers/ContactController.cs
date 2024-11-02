@@ -42,7 +42,7 @@ namespace ContactZone.Api.Controllers
         /// <param name="ddd"></param>
         /// <returns></returns>
         [HttpGet("FilterByDDD/{ddd}")]
-        public async Task<ActionResult<IEnumerable<FilterByDDDDto>>> GetAll(int ddd)
+        public async Task<IActionResult> GetAll(int ddd)
         {
             if (ddd < 0)
             {
@@ -60,7 +60,7 @@ namespace ContactZone.Api.Controllers
                 contacts = await _contactService.GetContactFilteringByDDD(ddd);
             }
 
-            var contactDtos = FilterByDDDDto.MapToDto(contacts);
+            var contactDtos = ContactDto.MapToDto(contacts);
 
             return Ok(contactDtos);
         }
@@ -76,7 +76,9 @@ namespace ContactZone.Api.Controllers
             if (contact == null)
                 return NotFound();
 
-            return Ok(contact);
+            var contactDto = ContactDto.MapToDto(contact);
+
+            return Ok(contactDto);
         }
 
         // PUT: api/Contact/{id}

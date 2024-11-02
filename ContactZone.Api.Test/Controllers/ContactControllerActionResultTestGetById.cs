@@ -1,4 +1,5 @@
 ﻿using ContactZone.Api.Controllers;
+using ContactZone.Api.Dtos;
 using ContactZone.Application.Services;
 using ContactZone.Domain.Domains;
 using Microsoft.AspNetCore.Mvc;
@@ -32,9 +33,11 @@ namespace ContactZone.Api.Test.Controllers
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
-            var contact = Assert.IsType<ContactDomain>(okResult.Value);
+            var contact = Assert.IsType<ContactDto>(okResult.Value); // Verifique o tipo ContactDto, não ContactDomain
             Assert.Equal(expectedContact.Id, contact.Id); // Verifica se o ID do contato retornado é o esperado
+            Assert.Equal(expectedContact.Name, contact.Name); // Verifica se o nome é o esperado
         }
+
 
         [Fact]
         public async Task GetById_NonExistentId_ReturnsNotFound()

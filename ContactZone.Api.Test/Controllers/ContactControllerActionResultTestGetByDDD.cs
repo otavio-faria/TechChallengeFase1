@@ -23,11 +23,11 @@ namespace ContactZone.Api.Test.Controllers
         {
             // Arrange
             int validDDD = 11; // Exemplo de DDD válido
-            var expectedContacts = new List<ContactDomain>
-            {
-                new ContactDomain { Id = 1, Name = "John Doe" },
-                new ContactDomain { Id = 2, Name = "Jane Doe" }
-            };
+                        var expectedContacts = new List<ContactDomain>
+                {
+                    new ContactDomain { Id = 1, Name = "John Doe" },
+                    new ContactDomain { Id = 2, Name = "Jane Doe" }
+                };
 
             _contactServiceMock.Setup(s => s.GetContactFilteringByDDD(validDDD))
                 .ReturnsAsync(expectedContacts);
@@ -36,9 +36,10 @@ namespace ContactZone.Api.Test.Controllers
             var result = await _controller.GetAll(validDDD);
 
             // Assert
-            var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var contacts = Assert.IsType<List<FilterByDDDDto>>(okResult.Value);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var contacts = Assert.IsType<List<ContactDto>>(okResult.Value); // Acessa o valor de OkObjectResult
             Assert.Equal(expectedContacts.Count, contacts.Count); // Verifica se o número de contatos é igual
         }
+
     }
 }

@@ -26,10 +26,10 @@ namespace ContactZone.Api.Test.Controllers
         {
             // Arrange
             var contacts = new List<ContactDomain>
-            {
-                new ContactDomain { Id = 1, Name = "Contact 1" },
-                new ContactDomain { Id = 2, Name = "Contact 2"}
-            };
+    {
+        new ContactDomain { Id = 1, Name = "Contact 1" },
+        new ContactDomain { Id = 2, Name = "Contact 2" }
+    };
 
             _mockContactService
                 .Setup(service => service.GetContactWithAllInformation())
@@ -39,10 +39,11 @@ namespace ContactZone.Api.Test.Controllers
             var result = await _controller.GetAll(0);
 
             // Assert
-            var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var returnedContacts = Assert.IsType<List<FilterByDDDDto>>(okResult.Value);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var returnedContacts = Assert.IsType<List<ContactDto>>(okResult.Value); // Acessa o valor de OkObjectResult
             Assert.Equal(contacts.Count, returnedContacts.Count); // Verifica se todos os contatos foram retornados
         }
+
 
         [Fact]
         public async Task GetAll_DDDIsNonZero_ReturnsContactsWithSpecificDDD()
@@ -50,16 +51,16 @@ namespace ContactZone.Api.Test.Controllers
             // Arrange
             var ddd = 11;
             var filteredContacts = new List<ContactDomain>
-            {
-                new ContactDomain 
-                { 
-                    Id = 1, 
-                    Name = "Contact 1",
-                            DDD = "11",
-                            Email = "teste@teste.com",
-                            Phone = "999999999",
-                }
-            };
+    {
+        new ContactDomain
+        {
+            Id = 1,
+            Name = "Contact 1",
+            DDD = "11",
+            Email = "teste@teste.com",
+            Phone = "999999999",
+        }
+    };
 
             _mockContactService
                 .Setup(service => service.GetContactFilteringByDDD(ddd))
@@ -69,10 +70,11 @@ namespace ContactZone.Api.Test.Controllers
             var result = await _controller.GetAll(ddd);
 
             // Assert
-            var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var returnedContacts = Assert.IsType<List<FilterByDDDDto>>(okResult.Value);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var returnedContacts = Assert.IsType<List<ContactDto>>(okResult.Value); // Acessa o valor de OkObjectResult
             Assert.Equal(filteredContacts.Count, returnedContacts.Count); // Verifica se apenas os contatos filtrados foram retornados
         }
+
 
         [Fact]
         public async Task GetAll_DDDIsNegative_ReturnsBadRequest()
@@ -84,7 +86,7 @@ namespace ContactZone.Api.Test.Controllers
             var result = await _controller.GetAll(negativeDDD);
 
             // Assert
-            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result.Result);
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("DDD cannot be negative.", badRequestResult.Value); // Verifica a mensagem de erro
         }
     }
