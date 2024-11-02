@@ -43,7 +43,7 @@ namespace ContactZone.Application.Services
 
         public async Task RemoveRangeAsync(IEnumerable<ContactDomain> entities)
         {
-            await _contactRepository.RemoveAsync((ContactDomain)entities);
+            await _contactRepository.RemoveRangeAsync(entities);
         }
 
         public async void Update(ContactDomain entity)

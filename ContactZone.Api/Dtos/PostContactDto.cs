@@ -1,7 +1,7 @@
-﻿using ContactZone.Domain.Domains;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using ContactZone.Domain.Domains;
 
-namespace ContactZone.Api.DTOs
+namespace ContactZone.Api.Dtos
 {
     public class PostContactDto
     {

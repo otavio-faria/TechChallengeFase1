@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using ContactZone.Api.Controllers;
+﻿using ContactZone.Api.Controllers;
+using ContactZone.Api.Dtos;
 using ContactZone.Application.Services;
 using ContactZone.Domain.Domains;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Xunit;
 
-namespace ContactZone.Tests.Api
+namespace ContactZone.Api.Test.Controllers
 {
     public class ContactControllerActionResultTestGetByDDD
     {
@@ -39,7 +37,7 @@ namespace ContactZone.Tests.Api
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var contacts = Assert.IsType<List<ContactDomain>>(okResult.Value);
+            var contacts = Assert.IsType<List<FilterByDDDDto>>(okResult.Value);
             Assert.Equal(expectedContacts.Count, contacts.Count); // Verifica se o número de contatos é igual
         }
     }

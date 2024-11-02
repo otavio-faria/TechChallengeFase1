@@ -1,13 +1,11 @@
-﻿using Moq;
-using Xunit;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using ContactZone.Api.Controllers;
+﻿using ContactZone.Api.Controllers;
+using ContactZone.Api.Dtos;
 using ContactZone.Application.Services;
 using ContactZone.Domain.Domains;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
 
-namespace ContactZone.Tests.Api
+namespace ContactZone.Api.Test.Controllers
 {
     public class ContactControllerValidationTestGetByDDD
     {
@@ -42,7 +40,7 @@ namespace ContactZone.Tests.Api
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var returnedContacts = Assert.IsType<List<ContactDomain>>(okResult.Value);
+            var returnedContacts = Assert.IsType<List<FilterByDDDDto>>(okResult.Value);
             Assert.Equal(contacts.Count, returnedContacts.Count); // Verifica se todos os contatos foram retornados
         }
 
@@ -72,7 +70,7 @@ namespace ContactZone.Tests.Api
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var returnedContacts = Assert.IsType<List<ContactDomain>>(okResult.Value);
+            var returnedContacts = Assert.IsType<List<FilterByDDDDto>>(okResult.Value);
             Assert.Equal(filteredContacts.Count, returnedContacts.Count); // Verifica se apenas os contatos filtrados foram retornados
         }
 

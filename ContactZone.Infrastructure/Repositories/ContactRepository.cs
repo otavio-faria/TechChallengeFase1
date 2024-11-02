@@ -1,7 +1,6 @@
 ﻿using ContactZone.Domain.Domains;
 using ContactZone.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Collections;
 using ContactZone.Application.Repositories;
 
 namespace ContactZone.Infrastructure.Repositories
