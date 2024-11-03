@@ -18,7 +18,7 @@ namespace ContactZone.Api.Controllers
 
         // POST: api/Contact
         [HttpPost]
-        public async Task<IActionResult> Create(PostContactDto dto)
+        public async Task<IActionResult> Create([FromBody] PostContactDto dto)
         {
             if (dto == null)
                 return BadRequest("Invalid contact data.");
@@ -42,7 +42,7 @@ namespace ContactZone.Api.Controllers
         /// <param name="ddd"></param>
         /// <returns></returns>
         [HttpGet("FilterByDDD/{ddd}")]
-        public async Task<ActionResult<IEnumerable<FilterByDDDDto>>> GetAll(int ddd)
+        public async Task<ActionResult<IEnumerable<FilterByDDDDto>>> GetAll([FromRoute] int ddd)
         {
             if (ddd < 0)
             {
@@ -67,7 +67,7 @@ namespace ContactZone.Api.Controllers
 
         // GET: api/Contact/{id}
         [HttpGet("GetByID/{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
             if (id <= 0) return BadRequest("The id must be a positive value");
 
@@ -81,7 +81,7 @@ namespace ContactZone.Api.Controllers
 
         // PUT: api/Contact/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, PostContactDto contactDto)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] PostContactDto contactDto)
         {
             if (contactDto == null || id <= 0)
                 return BadRequest("Invalid contact data.");
@@ -98,7 +98,7 @@ namespace ContactZone.Api.Controllers
 
         // DELETE: api/Contact/{id}
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var contact = await _contactService.GetByIdAsync(id);
             if (contact == null)
